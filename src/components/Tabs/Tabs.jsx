@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 import cn from 'classnames';
 
 export const Tabs = ({
   tabs,
   activeTabId,
-  setOnTabSelected,
   onTabSelected,
 }) => {
   return (
@@ -23,7 +22,7 @@ export const Tabs = ({
                 href={`#${tab.id}`}
                 data-cy="TabLink"
                 onClick={() => {
-                  setOnTabSelected(tab);
+                  onTabSelected(tab);
                 }}
               >
                 {tab.title}
@@ -34,7 +33,7 @@ export const Tabs = ({
       </div>
 
       <div className="block" data-cy="TabContent">
-        {onTabSelected.content}
+        {tabs.find(el => el.id === activeTabId).content}
       </div>
     </div>
   );
